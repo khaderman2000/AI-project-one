@@ -1,0 +1,94 @@
+for(i=0;i<sections.size();i++){
+                section =sections.get(i);
+                Day day= new Day();
+                List<DayOfWeek> dayOfWeek= new ArrayList<>();
+                List<Slot> slots =new ArrayList<>();
+                Random rand = new Random();
+                int d= rand.nextInt(5);
+                if(section.getCourse().getDuration()==Duration.LAB){
+
+                    switch (d) {
+
+                        case 0:{
+                            dayOfWeek.add(DayOfWeek.SATURDAY);
+                            day.setDayOfWeek(dayOfWeek);
+
+                        }
+                        case 1:{
+                            dayOfWeek.add(DayOfWeek.MONDAY);
+                            day.setDayOfWeek(dayOfWeek);
+                        }
+                        case 2:{
+                            dayOfWeek.add(DayOfWeek.TUESDAY);
+                            day.setDayOfWeek(dayOfWeek);
+                        }
+                        case 3:{
+                            dayOfWeek.add(DayOfWeek.WEDNESDAY);
+                            day.setDayOfWeek(dayOfWeek);
+                        }
+                        case 4:{
+                            dayOfWeek.add(DayOfWeek.THURSDAY);
+                            day.setDayOfWeek(dayOfWeek);
+                        }
+                    }
+
+                }else{
+                    int g =rand.nextInt(2);
+
+                    switch (d) {
+
+                        case 0:{
+                            dayOfWeek.add(DayOfWeek.SATURDAY);
+                            if (g==1)
+                            dayOfWeek.add(DayOfWeek.MONDAY);
+                            else
+                                dayOfWeek.add(DayOfWeek.WEDNESDAY);
+
+                            day.setDayOfWeek(dayOfWeek);
+                        }
+                        case 1:{
+                            dayOfWeek.add(DayOfWeek.MONDAY);
+                            if (g==1)
+                                dayOfWeek.add(DayOfWeek.SATURDAY);
+                            else
+                                dayOfWeek.add(DayOfWeek.WEDNESDAY);
+
+                            day.setDayOfWeek(dayOfWeek);
+                        }
+                        case 2:{
+                            dayOfWeek.add(DayOfWeek.TUESDAY);
+                            dayOfWeek.add(DayOfWeek.THURSDAY);
+                            day.setDayOfWeek(dayOfWeek);
+                        }
+                        case 3:{
+                            dayOfWeek.add(DayOfWeek.WEDNESDAY);
+                            if (g==1)
+                                dayOfWeek.add(DayOfWeek.MONDAY);
+                            else
+                                dayOfWeek.add(DayOfWeek.SATURDAY);
+
+                            day.setDayOfWeek(dayOfWeek);
+                        }
+                        case 4:{
+                            dayOfWeek.add(DayOfWeek.THURSDAY);
+                            dayOfWeek.add(DayOfWeek.TUESDAY);
+                            day.setDayOfWeek(dayOfWeek);
+                        }
+                    }
+                    Slot slot = new Slot();
+                    if(day.dayOfWeek.size() == 1){
+                        int  y = rand.nextInt(2);
+                        slot.setSlotType(Duration.LAB);
+                        slot.setSections(sections);
+                        switch (y){
+                            case 0:{
+                                slot.setSlotTime(SlotTime.FROM_8_30_TO_11_10);
+                            }
+                        }
+                    }
+                    
+
+
+                }
+
+            }
